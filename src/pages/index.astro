@@ -1,5 +1,5 @@
 ---
-
+import "../styles/global.css";
 ---
 
 <html lang="en">
@@ -11,6 +11,18 @@
 		<title>Astro</title>
 	</head>
 	<body>
-		<h1>Full stack developer</h1>
+		<div class="flex gap-4 px-6 py-12 mx-auto">
+			<div class="w-1/2">
+				<h1 class="text-3xl font-bold">
+					Hello, I'm <span class="text-blue-500">Masho Ado</span>, a software engineer based in Nairobi, Kenya.
+				</h1>
+				<p class="mt-2 text-gray-500">
+					I’m a developer passionate about crafting accessible, pixel-perfect user interfaces that blend thoughtful
+					design with robust engineering. My favorite work lies at the intersection of design and development, creating
+					experiences that not only look great but are meticulously built for performance and usability.
+				</p>
+			</div>
+			<div class="border-2 border-red-500 w-1/2"></div>
+		</div>
 	</body>
 </html>
