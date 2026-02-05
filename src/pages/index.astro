@@ -1,0 +1,243 @@
+---
+import "../styles/global.css";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta
+      name="description"
+      content="Masho Ado - Software Engineer based in Nairobi, Kenya"
+    />
+    <title>Masho Ado | Software Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    class="min-h-screen bg-[#faf9f6] text-[#1a1a1a] font-sans selection:bg-[#c9a87c] selection:text-white overflow-x-hidden"
+  >
+    <main class="max-w-5xl mx-auto px-8 md:px-16 py-20 md:py-32">
+      <!-- Hero Section -->
+      <section class="mb-32 md:mb-48">
+        <div class="grid grid-cols-12 gap-4">
+          <div class="col-span-12 md:col-span-8">
+            <p
+              class="text-[#c9a87c] text-sm tracking-[0.3em] uppercase mb-6 font-medium"
+            >
+              Software Engineer
+            </p>
+            <h1
+              class="font-serif text-5xl md:text-7xl lg:text-8xl font-normal leading-[0.95] mb-8"
+            >
+              Masho<br />
+              <span class="italic text-[#666]">Ado</span>
+            </h1>
+            <div class="w-16 h-px bg-[#c9a87c] mb-8"></div>
+            <p
+              class="text-lg md:text-xl text-[#555] leading-relaxed max-w-xl font-light"
+            >
+              Crafting accessible, pixel-perfect interfaces that blend
+              thoughtful design with robust engineering. Based in Nairobi,
+              Kenya.
+            </p>
+          </div>
+          <div class="col-span-12 md:col-span-4 md:text-right mt-8 md:mt-0">
+            <div class="space-y-3 text-sm text-[#777]">
+              <p>mashoado@gmail.com</p>
+              <p>+254 724 261 655</p>
+              <p class="text-[#c9a87c]">Nairobi, Kenya</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Links -->
+      <section class="mb-32 md:mb-48">
+        <div class="flex flex-wrap gap-8 md:gap-12">
+          <a
+            href="https://github.com/MashoAdo"
+            target="_blank"
+            rel="noopener"
+            class="group flex items-center gap-2 text-sm tracking-wider uppercase text-[#1a1a1a] hover:text-[#c9a87c] transition-colors duration-300"
+          >
+            <span>GitHub</span>
+            <span
+              class="w-4 h-px bg-current transform group-hover:w-6 transition-all duration-300"
+            ></span>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/masho-ado-36a16a193/"
+            target="_blank"
+            rel="noopener"
+            class="group flex items-center gap-2 text-sm tracking-wider uppercase text-[#1a1a1a] hover:text-[#c9a87c] transition-colors duration-300"
+          >
+            <span>LinkedIn</span>
+            <span
+              class="w-4 h-px bg-current transform group-hover:w-6 transition-all duration-300"
+            ></span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Experience -->
+      <section class="mb-32 md:mb-48">
+        <div class="grid grid-cols-12 gap-8">
+          <div class="col-span-12 md:col-span-3">
+            <h2
+              class="text-xs tracking-[0.3em] uppercase text-[#c9a87c] font-medium sticky top-8"
+            >
+              Experience
+            </h2>
+          </div>
+          <div class="col-span-12 md:col-span-9 space-y-16">
+            <!-- Job 1 -->
+            <article class="group">
+              <div
+                class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-4"
+              >
+                <h3 class="font-serif text-2xl md:text-3xl italic">
+                  Senior Frontend Engineer
+                </h3>
+                <span class="text-sm text-[#999] mt-2 md:mt-0"
+                  >2023 — Present</span
+                >
+              </div>
+              <p class="text-[#c9a87c] text-sm mb-4">Workpay</p>
+              <p class="text-[#666] leading-relaxed max-w-2xl">
+                Building performance management tools and feature flagging
+                systems. Implemented CI pipelines and OAuth 2.0 authentication.
+                Integrated AI code review reducing bugs by 15%.
+              </p>
+            </article>
+
+            <!-- Job 2 -->
+            <article class="group">
+              <div
+                class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-4"
+              >
+                <h3 class="font-serif text-2xl md:text-3xl italic">
+                  Full Stack Engineer
+                </h3>
+                <span class="text-sm text-[#999] mt-2 md:mt-0">2022 — 2023</span
+                >
+              </div>
+              <p class="text-[#c9a87c] text-sm mb-4">Zumi Africa</p>
+              <p class="text-[#666] leading-relaxed max-w-2xl">
+                Developed B2B e-commerce platform with unified supplier/customer
+                views. Built scalable RESTful APIs using Adonis.js. Optimized
+                performance achieving Google Core Web Vitals.
+              </p>
+            </article>
+
+            <!-- Job 3 -->
+            <article class="group">
+              <div
+                class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-4"
+              >
+                <h3 class="font-serif text-2xl md:text-3xl italic">
+                  Frontend Engineer
+                </h3>
+                <span class="text-sm text-[#999] mt-2 md:mt-0">2022</span>
+              </div>
+              <p class="text-[#c9a87c] text-sm mb-4">The Next Stage Lab</p>
+              <p class="text-[#666] leading-relaxed max-w-2xl">
+                Built user-friendly web pages using React, Next.js, and
+                Bootstrap. Translated UI/UX designs into functional, accessible
+                web experiences.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section class="mb-32 md:mb-48">
+        <div class="grid grid-cols-12 gap-8">
+          <div class="col-span-12 md:col-span-3">
+            <h2
+              class="text-xs tracking-[0.3em] uppercase text-[#c9a87c] font-medium"
+            >
+              Technologies
+            </h2>
+          </div>
+          <div class="col-span-12 md:col-span-9">
+            <div class="flex flex-wrap gap-x-8 gap-y-4">
+              <span class="text-lg font-serif italic">React</span>
+              <span class="text-lg font-serif italic">Next.js</span>
+              <span class="text-lg font-serif italic">TypeScript</span>
+              <span class="text-lg font-serif italic">Tailwind</span>
+              <span class="text-lg font-serif italic">Node.js</span>
+              <span class="text-lg font-serif italic">AWS</span>
+              <span class="text-lg font-serif italic">Docker</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Education -->
+      <section class="mb-32">
+        <div class="grid grid-cols-12 gap-8">
+          <div class="col-span-12 md:col-span-3">
+            <h2
+              class="text-xs tracking-[0.3em] uppercase text-[#c9a87c] font-medium"
+            >
+              Education
+            </h2>
+          </div>
+          <div class="col-span-12 md:col-span-9">
+            <h3 class="font-serif text-2xl md:text-3xl italic mb-2">
+              Computer Science
+            </h3>
+            <p class="text-[#666] mb-2">
+              Jomo Kenyatta University of Agriculture and Technology
+            </p>
+            <p class="text-sm text-[#999]">
+              2017 — 2021 • Second Class Honours (Upper Division)
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer
+      class="max-w-5xl mx-auto px-8 md:px-16 py-12 border-t border-[#e5e5e5]"
+    >
+      <p class="text-sm text-[#999] font-serif italic">
+        © {new Date().getFullYear()} Masho Ado
+      </p>
+    </footer>
+  </body>
+</html>
+
+<style>
+  :root {
+    --font-serif: "Cormorant Garamond", Georgia, serif;
+    --font-sans: "DM Sans", system-ui, sans-serif;
+  }
+
+  .font-serif {
+    font-family: var(--font-serif);
+  }
+
+  .font-sans {
+    font-family: var(--font-sans);
+  }
+
+  /* Smooth scroll */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom selection */
+  ::selection {
+    background-color: #c9a87c;
+    color: white;
+  }
+</style>
