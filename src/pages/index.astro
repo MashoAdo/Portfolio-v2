@@ -5,23 +5,23 @@ const contact = {
   email: "mashoado@gmail.com",
   phone: "+254 724 261 655",
   phoneHref: "tel:+254724261655",
-  location: "Kenya",
 };
 
-const profiles = [
-  { label: "GitHub", href: "https://github.com/MashoAdo" },
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/masho-ado-36a16a193/",
-  },
+const sections = [
+  { id: "about", label: "About" },
+  { id: "experience", label: "Experience" },
+  { id: "projects", label: "Projects" },
+  { id: "education", label: "Education" },
 ];
 
 const jobs = [
   {
     role: "Software Engineer",
     company: "GRIFFIN Global Technologies",
-    years: "Dec 2025 – now",
-    summary: "Web engineering, on-site in Nyeri.",
+    years: "Dec 2025 – Now",
+    summary:
+      "Built a suite of production applications for insurance claims operations: a secure multi-tenant central platform that is the single source of truth for claims, inspections, adjusters and carriers, plus two customer-facing apps for recruiting and managing adjusters and handling claim inspections.",
+    tags: [],
   },
   {
     role: "Frontend Developer",
@@ -29,12 +29,14 @@ const jobs = [
     years: "Oct 2023 – Aug 2025",
     summary:
       "Built performance management tools and feature flagging systems. Implemented CI pipelines and OAuth 2.0 authentication. Integrated AI code review, which cut bugs by 15%.",
+    tags: ["Feature flags", "OAuth 2.0", "CI pipelines", "AI code review"],
   },
   {
     role: "Frontend Engineering Consultant",
     company: "Workpay",
     years: "May – Oct 2023",
-    summary: "Contract role before joining full time.",
+    summary: "Contract role before joining the team full time.",
+    tags: [],
   },
   {
     role: "Full Stack Engineer",
@@ -42,6 +44,7 @@ const jobs = [
     years: "2022 – 2023",
     summary:
       "Developed a B2B e-commerce platform with unified supplier and customer views. Built REST APIs with AdonisJS. Tuned performance to pass Google's Core Web Vitals.",
+    tags: ["AdonisJS", "REST APIs", "Core Web Vitals"],
   },
   {
     role: "Frontend Engineer",
@@ -49,6 +52,7 @@ const jobs = [
     years: "2022",
     summary:
       "Built web pages with React, Next.js and Bootstrap from UI and UX designs.",
+    tags: ["React", "Next.js", "Bootstrap"],
   },
 ];
 
@@ -56,9 +60,9 @@ const projects = [
   {
     name: "FPL Manager Copilot",
     href: "https://fpl.mashoado.com",
-    linkLabel: "fpl.mashoado.com",
     summary:
-      "A planning tool for Fantasy Premier League managers: transfers, captain, lineup and chips for the next deadline, each with how sure it is.",
+      "A planning tool for Fantasy Premier League managers. Enter a team ID to get transfers, captain, lineup and chip advice for the next deadline, each with how sure it is.",
+    tags: ["TypeScript", "React", "AdonisJS", "PostgreSQL", "RabbitMQ"],
   },
 ];
 
@@ -75,6 +79,8 @@ const technologies = [
   "AWS",
   "Docker",
 ];
+
+const year = new Date().getFullYear();
 ---
 
 <html lang="en">
@@ -83,7 +89,10 @@ const technologies = [
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content="Masho Ado, software engineer in Kenya." />
+    <meta
+      name="description"
+      content="Masho Ado, software engineer in Kenya building web applications end to end."
+    />
     <meta
       name="theme-color"
       content="#fafafa"
@@ -91,222 +100,595 @@ const technologies = [
     />
     <meta
       name="theme-color"
-      content="#111113"
+      content="#101114"
       media="(prefers-color-scheme: dark)"
     />
     <title>Masho Ado | Software Engineer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
-    <main class="page">
-      <header class="intro">
-        <h1>Masho Ado</h1>
-        <p class="role">Software Engineer</p>
-        <p class="bio">
-          I build accessible, carefully made web interfaces, with the backend
-          work to go with them. Based in {contact.location}.
-        </p>
-        <ul class="links">
-          <li><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
-          {
-            profiles.map((l) => (
-              <li>
-                <a href={l.href} rel="noopener" target="_blank">
-                  {l.label}
-                </a>
-              </li>
-            ))
-          }
+    <a class="skip" href="#content">Skip to content</a>
+
+    <div class="layout">
+      <header class="side">
+        <div>
+          <h1><a href="/">Masho Ado</a></h1>
+          <p class="title">Software Engineer</p>
+          <p class="tagline">
+            I build web applications end to end, from accessible interfaces to
+            the APIs behind them.
+          </p>
+
+          <nav class="nav" aria-label="Sections">
+            <ul>
+              {
+                sections.map((s) => (
+                  <li>
+                    <a href={`#${s.id}`} data-nav={s.id}>
+                      <span class="nav-line" aria-hidden="true" />
+                      <span>{s.label}</span>
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </nav>
+        </div>
+
+        <ul class="socials" aria-label="Contact">
+          <li>
+            <a
+              href="https://github.com/MashoAdo"
+              rel="noopener"
+              target="_blank"
+              aria-label="GitHub"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true"
+                ><path
+                  fill="currentColor"
+                  d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.1c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z"
+                ></path></svg
+              >
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/masho-ado-36a16a193/"
+              rel="noopener"
+              target="_blank"
+              aria-label="LinkedIn"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true"
+                ><path
+                  fill="currentColor"
+                  d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2ZM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2ZM7.1 20.5H3.5V9h3.6v11.5ZM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7C24 .8 23.2 0 22.2 0Z"
+                ></path></svg
+              >
+            </a>
+          </li>
+          <li>
+            <a href={`mailto:${contact.email}`} aria-label="Email">
+              <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><rect x="3" y="5" width="18" height="14" rx="2"></rect><path
+                  d="m3.5 6.5 8.5 6 8.5-6"></path></svg
+              >
+            </a>
+          </li>
         </ul>
       </header>
 
-      <section aria-labelledby="experience">
-        <h2 id="experience">Experience</h2>
-        <ol class="list">
-          {
-            jobs.map((j) => (
-              <li class="item">
-                <div class="item-head">
-                  <h3>
-                    {j.role}
-                    <span class="at">{j.company}</span>
-                  </h3>
-                  <p class="when">{j.years}</p>
-                </div>
-                <p class="text">{j.summary}</p>
-              </li>
-            ))
-          }
-        </ol>
-      </section>
+      <main id="content" class="main">
+        <section id="about" aria-label="About">
+          <h2 class="section-title">About</h2>
+          <p>
+            I'm a software engineer in Kenya who builds web applications end to
+            end. Most of my time goes into the frontend, making interfaces that
+            are accessible, fast and easy to use, but I'm just as comfortable
+            designing the APIs and data behind them.
+          </p>
+          <p>
+            Right now I'm at <strong>GRIFFIN Global Technologies</strong>,
+            building production applications for insurance claims operations.
+            Before that I spent over two years at <strong>Workpay</strong> on performance
+            management tools and feature flagging, and built B2B e-commerce at <strong
+              >Zumi Africa</strong
+            >.
+          </p>
+          <p>
+            Outside work I built <a
+              href="https://fpl.mashoado.com"
+              rel="noopener"
+              target="_blank">FPL Manager Copilot</a
+            >, a planning tool for Fantasy Premier League managers.
+          </p>
+        </section>
 
-      <section aria-labelledby="projects">
-        <h2 id="projects">Projects</h2>
-        <ul class="list">
-          {
-            projects.map((p) => (
-              <li class="item">
-                <div class="item-head">
-                  <h3>{p.name}</h3>
-                  <a class="when" href={p.href} rel="noopener" target="_blank">
-                    {p.linkLabel}
-                  </a>
-                </div>
-                <p class="text">{p.summary}</p>
-              </li>
-            ))
-          }
-        </ul>
-      </section>
+        <section id="experience" aria-label="Experience">
+          <h2 class="section-title">Experience</h2>
+          <ol class="entries">
+            {
+              jobs.map((j) => (
+                <li class="entry">
+                  <p class="entry-when">{j.years}</p>
+                  <div>
+                    <h3 class="entry-title">
+                      {j.role}
+                      <span class="entry-org">{j.company}</span>
+                    </h3>
+                    <p class="entry-text">{j.summary}</p>
+                    {j.tags.length > 0 && (
+                      <ul class="tags" aria-label="Skills used">
+                        {j.tags.map((t) => (
+                          <li>{t}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </li>
+              ))
+            }
+          </ol>
 
-      <section aria-labelledby="technologies">
-        <h2 id="technologies">Technologies</h2>
-        <ul class="tech">
-          {technologies.map((t) => <li>{t}</li>)}
-        </ul>
-      </section>
+          <div class="skills">
+            <h3>Technologies</h3>
+            <ul class="tags">
+              {technologies.map((t) => <li>{t}</li>)}
+            </ul>
+          </div>
+        </section>
 
-      <section aria-labelledby="education">
-        <h2 id="education">Education</h2>
-        <div class="item-head">
-          <h3>
-            Computer Science
-            <span class="at"
-              >Jomo Kenyatta University of Agriculture and Technology</span
-            >
-          </h3>
-          <p class="when">2017 – 2021</p>
-        </div>
-        <p class="text">Second Class Honours (Upper Division)</p>
-      </section>
+        <section id="projects" aria-label="Projects">
+          <h2 class="section-title">Projects</h2>
+          <ul class="entries">
+            {
+              projects.map((p) => (
+                <li class="entry entry-linked">
+                  <p class="entry-when">Side project</p>
+                  <div>
+                    <h3 class="entry-title">
+                      <a
+                        class="entry-link"
+                        href={p.href}
+                        rel="noopener"
+                        target="_blank"
+                      >
+                        {p.name}
+                        <svg
+                          class="arrow"
+                          viewBox="0 0 16 16"
+                          aria-hidden="true"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.6"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M5 11 11 5M6 5h5v5" />
+                        </svg>
+                      </a>
+                    </h3>
+                    <p class="entry-text">{p.summary}</p>
+                    <ul class="tags" aria-label="Built with">
+                      {p.tags.map((t) => (
+                        <li>{t}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+        </section>
 
-      <footer class="foot">
-        <p>
-          <a href={`mailto:${contact.email}`}>{contact.email}</a>
-          <span aria-hidden="true">/</span>
-          <a href={contact.phoneHref}>{contact.phone}</a>
-        </p>
-        <p>© {new Date().getFullYear()} Masho Ado</p>
-      </footer>
-    </main>
+        <section id="education" aria-label="Education">
+          <h2 class="section-title">Education</h2>
+          <div class="entry">
+            <p class="entry-when">2017 – 2021</p>
+            <div>
+              <h3 class="entry-title">
+                Computer Science
+                <span class="entry-org"
+                  >Jomo Kenyatta University of Agriculture and Technology</span
+                >
+              </h3>
+              <p class="entry-text">Second Class Honours (Upper Division)</p>
+            </div>
+          </div>
+        </section>
+
+        <footer class="foot">
+          <p>
+            Get in touch at <a href={`mailto:${contact.email}`}
+              >{contact.email}</a
+            > or <a href={contact.phoneHref}>{contact.phone}</a>.
+          </p>
+          <p>© {year} Masho Ado</p>
+        </footer>
+      </main>
+    </div>
   </body>
 </html>
 
 <style>
-  .page {
-    max-width: 40rem;
-    margin-inline: auto;
-    padding: clamp(3.5rem, 12vw, 7rem) 1.5rem 3rem;
+  .skip {
+    position: absolute;
+    left: 1rem;
+    top: -3rem;
+    z-index: 10;
+    padding: 0.5rem 0.9rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 6px;
   }
 
-  section {
-    margin-top: 4rem;
+  .skip:focus {
+    top: 1rem;
+  }
+
+  .layout {
+    max-width: 72rem;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+
+  @media (min-width: 64rem) {
+    .layout {
+      display: flex;
+      justify-content: space-between;
+      gap: 4rem;
+      padding-inline: 3rem;
+    }
+  }
+
+  /* Left column: sticky on wide screens */
+  .side {
+    padding-top: 4rem;
+  }
+
+  @media (min-width: 64rem) {
+    .side {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      box-sizing: border-box;
+      width: 44%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-block: 6rem;
+    }
   }
 
   h1 {
     margin: 0;
-    font-size: 1.5rem;
-    font-weight: 600;
-    letter-spacing: -0.02em;
+    font-size: clamp(2.25rem, 5vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
   }
 
-  .role {
-    margin: 0.15rem 0 0;
+  h1 a {
+    text-decoration: none;
+  }
+
+  .title {
+    margin: 0.5rem 0 0;
+    font-size: 1.15rem;
+    font-weight: 500;
+  }
+
+  .tagline {
+    margin: 1rem 0 0;
+    max-width: 22rem;
     color: var(--muted);
   }
 
-  .bio {
-    margin: 1.5rem 0 0;
-    max-width: 34rem;
+  .nav {
+    display: none;
   }
 
-  .links {
+  @media (min-width: 64rem) {
+    .nav {
+      display: block;
+      margin-top: 4rem;
+    }
+  }
+
+  .nav ul {
     list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem 1.5rem;
-    margin: 1.5rem 0 0;
+    margin: 0;
     padding: 0;
   }
 
-  h2 {
-    margin: 0 0 1.25rem;
-    font-size: 0.95rem;
-    font-weight: 500;
+  .nav a {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    padding-block: 0.6rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  .nav-line {
+    display: block;
+    width: 2rem;
+    height: 1px;
+    background: currentColor;
+    transition: width 150ms ease;
+  }
+
+  .nav a:hover,
+  .nav a:focus-visible,
+  .nav a[aria-current="true"] {
+    color: var(--ink);
+  }
+
+  .nav a:hover .nav-line,
+  .nav a:focus-visible .nav-line,
+  .nav a[aria-current="true"] .nav-line {
+    width: 4rem;
+  }
+
+  .socials {
+    list-style: none;
+    display: flex;
+    gap: 1.25rem;
+    margin: 2rem 0 0;
+    padding: 0;
+  }
+
+  .socials a {
+    display: block;
     color: var(--muted);
   }
 
-  .list {
+  .socials a:hover {
+    color: var(--ink);
+  }
+
+  .socials svg {
+    display: block;
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+
+  /* Right column */
+  .main {
+    padding-block: 4rem 3rem;
+  }
+
+  @media (min-width: 64rem) {
+    .main {
+      width: 52%;
+      padding-block: 6rem;
+    }
+  }
+
+  section {
+    scroll-margin-top: 4rem;
+    margin-bottom: 5rem;
+  }
+
+  .section-title {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    margin: 0 -1.5rem 1.5rem;
+    padding: 1.25rem 1.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    background: color-mix(in srgb, var(--paper) 85%, transparent);
+    backdrop-filter: blur(8px);
+  }
+
+  @media (min-width: 64rem) {
+    .section-title {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  #about p {
+    margin: 0 0 1rem;
+    color: var(--muted);
+  }
+
+  #about strong {
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  #about a {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .entries {
     list-style: none;
     margin: 0;
     padding: 0;
     display: grid;
-    gap: 1.75rem;
+    gap: 3rem;
   }
 
-  .item-head {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 0.1rem 1rem;
+  .entry {
+    display: grid;
+    gap: 0.5rem;
   }
 
-  h3 {
+  @media (min-width: 40rem) {
+    .entry {
+      grid-template-columns: 8.5rem minmax(0, 1fr);
+      gap: 1.5rem;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .entries {
+      gap: 0.75rem;
+    }
+
+    .entries .entry {
+      margin-inline: -1.5rem;
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      transition:
+        background-color 150ms ease,
+        border-color 150ms ease;
+    }
+
+    .entries .entry:hover {
+      background: var(--surface);
+      border-color: var(--line);
+    }
+  }
+
+  .entry-when {
+    margin: 0;
+    padding-top: 0.15rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .entry-title {
     margin: 0;
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 600;
+    line-height: 1.4;
   }
 
-  .at {
+  .entry-org {
     display: block;
     font-weight: 400;
     color: var(--muted);
   }
 
-  .when {
-    margin: 0;
-    font-size: 0.9rem;
-    color: var(--muted);
-    font-variant-numeric: tabular-nums;
+  .entry-link {
+    text-decoration: none;
   }
 
-  .text {
+  .entry-link:hover {
+    color: var(--accent);
+  }
+
+  .entry-link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+
+  .entry-linked {
+    position: relative;
+  }
+
+  .arrow {
+    display: inline-block;
+    width: 0.9em;
+    height: 0.9em;
+    margin-left: 0.25rem;
+    vertical-align: -0.05em;
+    transition: transform 150ms ease;
+  }
+
+  .entry-linked:hover .arrow {
+    transform: translate(2px, -2px);
+  }
+
+  .entry-text {
     margin: 0.5rem 0 0;
+    font-size: 0.95rem;
     color: var(--muted);
   }
 
-  .tech {
+  .tags {
     list-style: none;
-    margin: 0;
-    padding: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 0.4rem 1.25rem;
+    gap: 0.5rem;
+    margin: 1rem 0 0;
+    padding: 0;
+  }
+
+  .tags li {
+    padding: 0.2rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--accent);
+    background: var(--accent-soft);
+  }
+
+  .skills {
+    margin-top: 3rem;
+  }
+
+  .skills h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
   }
 
   .foot {
-    margin-top: 5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--line);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 0.5rem 1.5rem;
-    font-size: 0.9rem;
+    font-size: 0.875rem;
     color: var(--muted);
   }
 
   .foot p {
-    margin: 0;
+    margin: 0 0 0.5rem;
+    max-width: 28rem;
   }
 
-  .foot span {
-    margin-inline: 0.5rem;
+  .foot a {
+    color: var(--ink);
   }
 </style>
+
+<script>
+  // Mark the nav link of the section in view.
+  const links = new Map(
+    [...document.querySelectorAll<HTMLAnchorElement>("[data-nav]")].map((a) => [
+      a.dataset.nav,
+      a,
+    ]),
+  );
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        for (const [id, a] of links) {
+          if (id === entry.target.id) a.setAttribute("aria-current", "true");
+          else a.removeAttribute("aria-current");
+        }
+      }
+    },
+    { rootMargin: "-30% 0px -60% 0px" },
+  );
+  for (const id of links.keys()) {
+    const section = id ? document.getElementById(id) : null;
+    if (section) observer.observe(section);
+  }
+</script>

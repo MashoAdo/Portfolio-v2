@@ -1,11 +1,14 @@
 @import "tailwindcss";
 
-/* Tokens: neutral greys, one typeface, light and dark by system setting. */
+/* Tokens: neutral greys with one blue accent, one typeface, light and dark by system setting. */
 :root {
   --paper: #fafafa;
+  --surface: #ffffff;
   --ink: #18181b;
-  --muted: #6b6b73;
+  --muted: #62626b;
   --line: #e4e4e7;
+  --accent: #1f56c9;
+  --accent-soft: #e6edfc;
 
   --font: "Geist", ui-sans-serif, system-ui, sans-serif;
 
@@ -14,10 +17,13 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --paper: #111113;
+    --paper: #101114;
+    --surface: #17181d;
     --ink: #ededef;
-    --muted: #9b9ba3;
-    --line: #2a2a2e;
+    --muted: #9d9ea8;
+    --line: #26272d;
+    --accent: #93b1ff;
+    --accent-soft: #1b2440;
 
     color-scheme: dark;
   }
