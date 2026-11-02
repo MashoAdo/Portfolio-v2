@@ -1,243 +1,691 @@
 ---
 import "../styles/global.css";
+import CaptainSim from "../components/CaptainSim.astro";
+
+const jobs = [
+  {
+    role: "Senior Frontend Engineer",
+    company: "Workpay",
+    years: "2023 to now",
+    summary:
+      "Building performance management tools and feature flagging systems. Implemented CI pipelines and OAuth 2.0 authentication. Integrated AI code review, which cut bugs by 15%.",
+  },
+  {
+    role: "Full Stack Engineer",
+    company: "Zumi Africa",
+    years: "2022 to 2023",
+    summary:
+      "Developed a B2B e-commerce platform with unified supplier and customer views. Built scalable REST APIs with AdonisJS. Tuned performance to pass Google's Core Web Vitals.",
+  },
+  {
+    role: "Frontend Engineer",
+    company: "The Next Stage Lab",
+    years: "2022",
+    summary:
+      "Built user-friendly web pages with React, Next.js and Bootstrap. Turned UI and UX designs into functional, accessible web experiences.",
+  },
+];
+
+const built = [
+  {
+    term: "Projections",
+    text: "A points model built from its parts (minutes, goals, assists, clean sheets, bonus) on team attack and defence ratings fitted to expected goals. Backtested on two past seasons with no look-ahead.",
+  },
+  {
+    term: "Simulation",
+    text: "20,000 sampled gameweeks per run give every player a range of outcomes, the chance of a blank, and the odds each captain pick comes out on top.",
+  },
+  {
+    term: "Optimiser",
+    text: "A mixed-integer model of FPL's rules (budget, three per club, free transfers, hits, chips) solved by HiGHS compiled to WebAssembly in a worker thread. A four-week plan solves in about 55 ms at the median.",
+  },
+  {
+    term: "Product",
+    text: "Google sign-in, mini-league rival comparisons, squad import from a screenshot (Gemini vision with an in-browser Tesseract fallback), weekly reviews that score every recommendation against real points, and an admin dashboard.",
+  },
+  {
+    term: "Platform",
+    text: "An AdonisJS API on PostgreSQL, with RabbitMQ workers and a scheduler that pull FPL data around each deadline. Shipped in Docker behind Caddy on a VPS from GitHub Actions, with alerts, nightly backups and Prometheus metrics.",
+  },
+];
+
+const stack = [
+  "TypeScript",
+  "React 19",
+  "TanStack Router",
+  "TanStack Query",
+  "Tailwind CSS",
+  "AdonisJS",
+  "PostgreSQL",
+  "RabbitMQ",
+  "HiGHS (WebAssembly)",
+  "Docker",
+];
+
+const technologies = [
+  "React",
+  "Next.js",
+  "TypeScript",
+  "Tailwind CSS",
+  "Node.js",
+  "AdonisJS",
+  "PostgreSQL",
+  "RabbitMQ",
+  "AWS",
+  "Docker",
+];
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <meta
       name="description"
-      content="Masho Ado - Software Engineer based in Nairobi, Kenya"
+      content="Masho Ado, software engineer in Nairobi, Kenya. Frontend at Workpay, and builder of FPL Manager Copilot, a decision engine for Fantasy Premier League."
     />
-    <title>Masho Ado | Software Engineer</title>
+    <meta
+      name="theme-color"
+      content="#f2f3f6"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#13141d"
+      media="(prefers-color-scheme: dark)"
+    />
+    <title>Masho Ado, software engineer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&display=swap"
       rel="stylesheet"
     />
   </head>
-  <body
-    class="min-h-screen bg-[#faf9f6] text-[#1a1a1a] font-sans selection:bg-[#c9a87c] selection:text-white overflow-x-hidden"
-  >
-    <main class="max-w-5xl mx-auto px-8 md:px-16 py-20 md:py-32">
-      <!-- Hero Section -->
-      <section class="mb-32 md:mb-48">
-        <div class="grid grid-cols-12 gap-4">
-          <div class="col-span-12 md:col-span-8">
-            <p
-              class="text-[#c9a87c] text-sm tracking-[0.3em] uppercase mb-6 font-medium"
-            >
-              Software Engineer
+  <body>
+    <a class="skip" href="#work">Skip to work</a>
+
+    <header class="top wrap">
+      <a href="#top" class="mark" aria-label="Masho Ado, back to top">MA</a>
+      <nav aria-label="Sections">
+        <a href="#work">Work</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero wrap" aria-labelledby="name">
+        <h1 id="name">Masho Ado</h1>
+        <div class="hero-grid">
+          <p class="intro">
+            Software engineer in Nairobi. I build accessible interfaces for
+            decisions people care about, from performance tools at Workpay to an
+            engine that plans a Fantasy Premier League team and says how sure it
+            is.
+          </p>
+          <ul class="contact-list" aria-label="Contact">
+            <li><a href="mailto:mashoado@gmail.com">mashoado@gmail.com</a></li>
+            <li>
+              <a
+                href="https://github.com/MashoAdo"
+                rel="noopener"
+                target="_blank">GitHub</a>
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/masho-ado-36a16a193/"
+                rel="noopener"
+                target="_blank">LinkedIn</a
+              >
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="work" class="work wrap" aria-labelledby="work-title">
+        <h2 id="work-title" class="section-title">Selected work</h2>
+
+        <article class="project" aria-labelledby="fpl-title">
+          <header class="project-head">
+            <h3 id="fpl-title">FPL Manager Copilot</h3>
+            <p class="lead">
+              Enter a Fantasy Premier League team ID and get a plan for the next
+              deadline: transfers, captain, lineup, bench order and when to play
+              each chip. Every suggestion shows how many points it should gain
+              over making no move, and how often it comes out ahead across
+              thousands of simulated gameweeks.
             </p>
-            <h1
-              class="font-serif text-5xl md:text-7xl lg:text-8xl font-normal leading-[0.95] mb-8"
-            >
-              Masho<br />
-              <span class="italic text-[#666]">Ado</span>
-            </h1>
-            <div class="w-16 h-px bg-[#c9a87c] mb-8"></div>
-            <p
-              class="text-lg md:text-xl text-[#555] leading-relaxed max-w-xl font-light"
-            >
-              Crafting accessible, pixel-perfect interfaces that blend
-              thoughtful design with robust engineering. Based in Nairobi,
-              Kenya.
+            <p class="project-meta">
+              <span
+                >Solo project, 2026. Product, design, data and engineering.</span
+              >
+              <a
+                class="visit"
+                href="https://fpl.mashoado.com"
+                rel="noopener"
+                target="_blank">Open fpl.mashoado.com</a
+              >
             </p>
-          </div>
-          <div class="col-span-12 md:col-span-4 md:text-right mt-8 md:mt-0">
-            <div class="space-y-3 text-sm text-[#777]">
-              <p>mashoado@gmail.com</p>
-              <p>+254 724 261 655</p>
-              <p class="text-[#c9a87c]">Nairobi, Kenya</p>
+          </header>
+
+          <div class="project-body">
+            <dl class="built">
+              {
+                built.map((b) => (
+                  <div>
+                    <dt>{b.term}</dt>
+                    <dd>{b.text}</dd>
+                  </div>
+                ))
+              }
+            </dl>
+            <div class="sim-slot">
+              <CaptainSim />
             </div>
           </div>
-        </div>
+
+          <div class="shots">
+            <figure class="shot shot-today">
+              <img
+                src="/work/fpl-copilot/today.webp"
+                width="1280"
+                height="1014"
+                loading="lazy"
+                decoding="async"
+                alt="The Today page: the deadline, the best plan over four gameweeks, and the first priority action, Sell Rogers and buy Gordon, which beats holding in 74% of simulations."
+              />
+              <figcaption>
+                Today: the briefing for the next deadline, most urgent move
+                first.
+              </figcaption>
+            </figure>
+            <figure class="shot shot-squad">
+              <img
+                src="/work/fpl-copilot/squad.webp"
+                width="1280"
+                height="1288"
+                loading="lazy"
+                decoding="async"
+                alt="The Squad page in dark mode: the starting eleven on a pitch with each player's fixture, expected points and chance of starting, and the bench in substitution order."
+              />
+              <figcaption>
+                Squad: expected points and chance of starting for every player.
+              </figcaption>
+            </figure>
+            <figure class="shot shot-captain">
+              <img
+                src="/work/fpl-copilot/captaincy.webp"
+                width="780"
+                height="1200"
+                loading="lazy"
+                decoding="async"
+                alt="The captaincy card on a phone: captain M. Salah, vice Watkins, with each candidate's expected points, chance of scoring the most, and chance of starting."
+              />
+              <figcaption>Captaincy on a phone.</figcaption>
+            </figure>
+          </div>
+
+          <ul class="stack" aria-label="Built with">
+            {stack.map((s) => <li>{s}</li>)}
+          </ul>
+        </article>
       </section>
 
-      <!-- Links -->
-      <section class="mb-32 md:mb-48">
-        <div class="flex flex-wrap gap-8 md:gap-12">
-          <a
-            href="https://github.com/MashoAdo"
-            target="_blank"
-            rel="noopener"
-            class="group flex items-center gap-2 text-sm tracking-wider uppercase text-[#1a1a1a] hover:text-[#c9a87c] transition-colors duration-300"
-          >
-            <span>GitHub</span>
-            <span
-              class="w-4 h-px bg-current transform group-hover:w-6 transition-all duration-300"
-            ></span>
-          </a>
-          <a
-            href="https://www.linkedin.com/in/masho-ado-36a16a193/"
-            target="_blank"
-            rel="noopener"
-            class="group flex items-center gap-2 text-sm tracking-wider uppercase text-[#1a1a1a] hover:text-[#c9a87c] transition-colors duration-300"
-          >
-            <span>LinkedIn</span>
-            <span
-              class="w-4 h-px bg-current transform group-hover:w-6 transition-all duration-300"
-            ></span>
-          </a>
-        </div>
+      <section
+        id="experience"
+        class="experience wrap"
+        aria-labelledby="experience-title"
+      >
+        <h2 id="experience-title" class="section-title">Experience</h2>
+        <ol class="jobs">
+          {
+            jobs.map((j) => (
+              <li class="job">
+                <p class="years">{j.years}</p>
+                <div>
+                  <h3>
+                    {j.role}
+                    <span class="company">{j.company}</span>
+                  </h3>
+                  <p>{j.summary}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ol>
       </section>
 
-      <!-- Experience -->
-      <section class="mb-32 md:mb-48">
-        <div class="grid grid-cols-12 gap-8">
-          <div class="col-span-12 md:col-span-3">
-            <h2
-              class="text-xs tracking-[0.3em] uppercase text-[#c9a87c] font-medium sticky top-8"
-            >
-              Experience
-            </h2>
-          </div>
-          <div class="col-span-12 md:col-span-9 space-y-16">
-            <!-- Job 1 -->
-            <article class="group">
-              <div
-                class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-4"
-              >
-                <h3 class="font-serif text-2xl md:text-3xl italic">
-                  Senior Frontend Engineer
-                </h3>
-                <span class="text-sm text-[#999] mt-2 md:mt-0"
-                  >2023 — Present</span
-                >
-              </div>
-              <p class="text-[#c9a87c] text-sm mb-4">Workpay</p>
-              <p class="text-[#666] leading-relaxed max-w-2xl">
-                Building performance management tools and feature flagging
-                systems. Implemented CI pipelines and OAuth 2.0 authentication.
-                Integrated AI code review reducing bugs by 15%.
-              </p>
-            </article>
-
-            <!-- Job 2 -->
-            <article class="group">
-              <div
-                class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-4"
-              >
-                <h3 class="font-serif text-2xl md:text-3xl italic">
-                  Full Stack Engineer
-                </h3>
-                <span class="text-sm text-[#999] mt-2 md:mt-0">2022 — 2023</span
-                >
-              </div>
-              <p class="text-[#c9a87c] text-sm mb-4">Zumi Africa</p>
-              <p class="text-[#666] leading-relaxed max-w-2xl">
-                Developed B2B e-commerce platform with unified supplier/customer
-                views. Built scalable RESTful APIs using Adonis.js. Optimized
-                performance achieving Google Core Web Vitals.
-              </p>
-            </article>
-
-            <!-- Job 3 -->
-            <article class="group">
-              <div
-                class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-4"
-              >
-                <h3 class="font-serif text-2xl md:text-3xl italic">
-                  Frontend Engineer
-                </h3>
-                <span class="text-sm text-[#999] mt-2 md:mt-0">2022</span>
-              </div>
-              <p class="text-[#c9a87c] text-sm mb-4">The Next Stage Lab</p>
-              <p class="text-[#666] leading-relaxed max-w-2xl">
-                Built user-friendly web pages using React, Next.js, and
-                Bootstrap. Translated UI/UX designs into functional, accessible
-                web experiences.
-              </p>
-            </article>
-          </div>
+      <section class="facts wrap" aria-label="Technologies and education">
+        <div>
+          <h2 class="section-title">Technologies</h2>
+          <ul class="tech">
+            {technologies.map((t) => <li>{t}</li>)}
+          </ul>
         </div>
-      </section>
-
-      <!-- Skills -->
-      <section class="mb-32 md:mb-48">
-        <div class="grid grid-cols-12 gap-8">
-          <div class="col-span-12 md:col-span-3">
-            <h2
-              class="text-xs tracking-[0.3em] uppercase text-[#c9a87c] font-medium"
-            >
-              Technologies
-            </h2>
-          </div>
-          <div class="col-span-12 md:col-span-9">
-            <div class="flex flex-wrap gap-x-8 gap-y-4">
-              <span class="text-lg font-serif italic">React</span>
-              <span class="text-lg font-serif italic">Next.js</span>
-              <span class="text-lg font-serif italic">TypeScript</span>
-              <span class="text-lg font-serif italic">Tailwind</span>
-              <span class="text-lg font-serif italic">Node.js</span>
-              <span class="text-lg font-serif italic">AWS</span>
-              <span class="text-lg font-serif italic">Docker</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Education -->
-      <section class="mb-32">
-        <div class="grid grid-cols-12 gap-8">
-          <div class="col-span-12 md:col-span-3">
-            <h2
-              class="text-xs tracking-[0.3em] uppercase text-[#c9a87c] font-medium"
-            >
-              Education
-            </h2>
-          </div>
-          <div class="col-span-12 md:col-span-9">
-            <h3 class="font-serif text-2xl md:text-3xl italic mb-2">
-              Computer Science
-            </h3>
-            <p class="text-[#666] mb-2">
-              Jomo Kenyatta University of Agriculture and Technology
-            </p>
-            <p class="text-sm text-[#999]">
-              2017 — 2021 • Second Class Honours (Upper Division)
-            </p>
-          </div>
+        <div>
+          <h2 class="section-title">Education</h2>
+          <p class="degree">Computer Science</p>
+          <p>Jomo Kenyatta University of Agriculture and Technology</p>
+          <p class="quiet">
+            2017 to 2021, Second Class Honours (Upper Division)
+          </p>
         </div>
       </section>
     </main>
 
-    <footer
-      class="max-w-5xl mx-auto px-8 md:px-16 py-12 border-t border-[#e5e5e5]"
-    >
-      <p class="text-sm text-[#999] font-serif italic">
-        © {new Date().getFullYear()} Masho Ado
+    <footer id="contact" class="foot wrap">
+      <h2 class="foot-title">Have something worth building?</h2>
+      <p class="foot-email">
+        <a href="mailto:mashoado@gmail.com">mashoado@gmail.com</a>
       </p>
+      <ul class="foot-links">
+        <li><a href="tel:+254724261655">+254 724 261 655</a></li>
+        <li>
+          <a href="https://github.com/MashoAdo" rel="noopener" target="_blank"
+            >GitHub</a>
+        </li>
+        <li>
+          <a
+            href="https://www.linkedin.com/in/masho-ado-36a16a193/"
+            rel="noopener"
+            target="_blank">LinkedIn</a
+          >
+        </li>
+        <li class="quiet">Nairobi, Kenya</li>
+      </ul>
+      <p class="quiet copyright">© {new Date().getFullYear()} Masho Ado</p>
     </footer>
   </body>
 </html>
 
 <style>
-  :root {
-    --font-serif: "Cormorant Garamond", Georgia, serif;
-    --font-sans: "DM Sans", system-ui, sans-serif;
+  .wrap {
+    max-width: 76rem;
+    margin-inline: auto;
+    padding-inline: var(--gutter);
   }
 
-  .font-serif {
-    font-family: var(--font-serif);
+  .skip {
+    position: absolute;
+    left: 1rem;
+    top: -3rem;
+    padding: 0.5rem 0.9rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    z-index: 10;
   }
 
-  .font-sans {
-    font-family: var(--font-sans);
+  .skip:focus {
+    top: 1rem;
   }
 
-  /* Smooth scroll */
-  html {
-    scroll-behavior: smooth;
+  /* Top bar */
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 1.5rem;
   }
 
-  /* Custom selection */
-  ::selection {
-    background-color: #c9a87c;
-    color: white;
+  .mark {
+    font-weight: 800;
+    font-stretch: 75%;
+    font-size: 1.35rem;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+  }
+
+  .top nav {
+    display: flex;
+    gap: clamp(1rem, 3vw, 2rem);
+    font-size: 0.95rem;
+  }
+
+  .top nav a {
+    text-decoration: none;
+    color: var(--muted);
+  }
+
+  .top nav a:hover {
+    color: var(--ink);
+  }
+
+  /* Hero: the name set large and condensed is the page's signature */
+  .hero {
+    padding-block: clamp(3rem, 10vw, 8rem) clamp(4rem, 10vw, 8rem);
+  }
+
+  .hero h1 {
+    margin: 0;
+    font-size: clamp(4.25rem, 17vw, 13.5rem);
+    font-weight: 800;
+    font-stretch: 75%;
+    font-variation-settings: "opsz" 96;
+    line-height: 0.82;
+    letter-spacing: -0.035em;
+  }
+
+  .hero-grid {
+    display: grid;
+    gap: 2rem;
+    margin-top: clamp(2rem, 5vw, 3.5rem);
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .intro {
+    margin: 0;
+    font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+    line-height: 1.45;
+    max-width: 34ch;
+    font-weight: 400;
+  }
+
+  .contact-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    align-content: end;
+  }
+
+  @media (min-width: 52rem) {
+    .hero-grid {
+      grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+      align-items: end;
+    }
+
+    .contact-list {
+      flex-direction: column;
+      justify-self: end;
+      text-align: right;
+    }
+  }
+
+  .section-title {
+    margin: 0 0 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--muted);
+  }
+
+  /* Work */
+  .work {
+    padding-block: clamp(3rem, 8vw, 6rem);
+    border-top: 1px solid var(--line);
+  }
+
+  .project-head h3 {
+    margin: 0;
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    font-weight: 750;
+    font-stretch: 80%;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+  }
+
+  .lead {
+    margin: 1.5rem 0 0;
+    font-size: clamp(1.1rem, 1.8vw, 1.3rem);
+    line-height: 1.5;
+    max-width: 60ch;
+  }
+
+  .project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.75rem 1.5rem;
+    margin: 1.5rem 0 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  .visit {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .project-body {
+    display: grid;
+    gap: 3rem;
+    margin-top: clamp(2.5rem, 6vw, 4rem);
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  @media (min-width: 60rem) {
+    .project-body {
+      grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+      align-items: start;
+    }
+
+    .sim-slot {
+      position: sticky;
+      top: 2rem;
+    }
+  }
+
+  .built {
+    margin: 0;
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .built dt {
+    font-weight: 650;
+    font-size: 1.05rem;
+  }
+
+  .built dd {
+    margin: 0.25rem 0 0;
+    color: var(--muted);
+    max-width: var(--measure);
+  }
+
+  .shots {
+    display: grid;
+    gap: 1.25rem;
+    margin-top: clamp(3rem, 7vw, 5rem);
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .shot {
+    margin: 0;
+  }
+
+  .shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+  }
+
+  .shot figcaption {
+    margin-top: 0.6rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  .shot-captain img {
+    max-width: 22rem;
+  }
+
+  @media (min-width: 52rem) {
+    .shots {
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.2fr) minmax(0, 0.9fr);
+      align-items: start;
+    }
+
+    .shot img {
+      height: 26rem;
+      object-fit: cover;
+      object-position: top left;
+    }
+
+    .shot-captain img {
+      max-width: none;
+    }
+  }
+
+  .stack {
+    list-style: none;
+    margin: 2.5rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .stack li {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.7rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--muted);
+  }
+
+  /* Experience: a timeline, so the years lead */
+  .experience {
+    padding-block: clamp(3rem, 8vw, 6rem);
+    border-top: 1px solid var(--line);
+  }
+
+  .jobs {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 2.5rem;
+  }
+
+  .job {
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  @media (min-width: 52rem) {
+    .job {
+      grid-template-columns: 11rem minmax(0, 1fr);
+      gap: 2rem;
+    }
+  }
+
+  .years {
+    margin: 0;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    padding-top: 0.3rem;
+  }
+
+  .job h3 {
+    margin: 0;
+    font-size: clamp(1.4rem, 2.6vw, 1.85rem);
+    font-weight: 650;
+    font-stretch: 85%;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+  }
+
+  .company {
+    display: block;
+    font-size: 1rem;
+    font-weight: 500;
+    font-stretch: 100%;
+    letter-spacing: 0;
+    color: var(--accent);
+    margin-top: 0.2rem;
+  }
+
+  .job p:not(.years) {
+    margin: 0.6rem 0 0;
+    color: var(--muted);
+    max-width: var(--measure);
+  }
+
+  /* Technologies and education */
+  .facts {
+    display: grid;
+    gap: 3rem;
+    padding-block: clamp(3rem, 8vw, 6rem);
+    border-top: 1px solid var(--line);
+  }
+
+  @media (min-width: 52rem) {
+    .facts {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+  }
+
+  .facts p {
+    margin: 0;
+  }
+
+  .tech {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.25rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+
+  .degree {
+    font-size: 1.35rem;
+    font-weight: 650;
+    margin-bottom: 0.35rem !important;
+  }
+
+  .quiet {
+    color: var(--muted);
+  }
+
+  /* Footer */
+  .foot {
+    padding-block: clamp(4rem, 10vw, 7rem) 2.5rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .foot-title {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--muted);
+  }
+
+  .foot-email {
+    margin: 0.5rem 0 0;
+    font-size: clamp(1.9rem, 6.5vw, 4.5rem);
+    font-weight: 750;
+    font-stretch: 80%;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    overflow-wrap: anywhere;
+  }
+
+  .foot-email a {
+    text-decoration-thickness: 2px;
+  }
+
+  .foot-links {
+    list-style: none;
+    margin: 2rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.75rem;
+  }
+
+  .copyright {
+    margin: 3.5rem 0 0;
+    font-size: 0.85rem;
   }
 </style>

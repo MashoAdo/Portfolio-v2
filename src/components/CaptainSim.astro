@@ -1,0 +1,354 @@
+---
+/**
+ * A small, honest version of FPL Copilot's captaincy simulation: five picks
+ * from the app's demo team, each gameweek sampled from the player's expected
+ * points and chance of starting. The mark on each bar is the share the real
+ * engine reported for the same picks.
+ */
+const picks = [
+  {
+    name: "M. Salah",
+    fixture: "LIV v CHE (A)",
+    xp: 5.8,
+    start: 0.97,
+    engine: 31,
+  },
+  {
+    name: "Watkins",
+    fixture: "AVL v MUN (H)",
+    xp: 5.2,
+    start: 0.9,
+    engine: 20,
+  },
+  {
+    name: "Semenyo",
+    fixture: "BOU v TOT (H)",
+    xp: 5.1,
+    start: 0.95,
+    engine: 19,
+  },
+  {
+    name: "Gabriel",
+    fixture: "ARS v EVE (H)",
+    xp: 5.0,
+    start: 0.95,
+    engine: 17,
+  },
+  {
+    name: "Gordon",
+    fixture: "NEW v CRY (A)",
+    xp: 4.7,
+    start: 0.93,
+    engine: 13,
+  },
+];
+---
+
+<figure class="sim" data-sim data-picks={JSON.stringify(picks)}>
+  <figcaption class="sim-head">
+    <h3>Who should wear the armband?</h3>
+    <p>
+      Five captain picks from the app's demo team. Each run plays the gameweek
+      1,000 times and counts how often each player scores the most.
+    </p>
+  </figcaption>
+
+  <table class="sim-table">
+    <thead>
+      <tr>
+        <th scope="col">Player</th>
+        <th scope="col" class="num">xP</th>
+        <th scope="col" class="share-col">Scores the most</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        picks.map((p, i) => (
+          <tr>
+            <th scope="row">
+              <span class="player">{p.name}</span>
+              <span class="fixture">{p.fixture}</span>
+            </th>
+            <td class="num">{p.xp.toFixed(1)}</td>
+            <td class="share-col">
+              <div class="share">
+                <div class="bar" style={`--engine: ${p.engine}%`}>
+                  <span class="fill" data-fill={i} />
+                  <span
+                    class="tick"
+                    title={`The engine's full model: ${p.engine}%`}
+                  />
+                </div>
+                <span class="pct" data-pct={i}>
+                  –
+                </span>
+              </div>
+            </td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+
+  <div class="sim-foot">
+    <button type="button" class="run" data-run>Simulate 1,000 gameweeks</button>
+    <p class="status" data-status aria-live="polite">
+      The mark on each bar is the engine's answer from 20,000 simulations of its
+      full model.
+    </p>
+  </div>
+</figure>
+
+<style>
+  .sim {
+    margin: 0;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: clamp(1.25rem, 3vw, 2rem);
+  }
+
+  .sim-head h3 {
+    margin: 0 0 0.35rem;
+    font-size: 1.35rem;
+    font-weight: 650;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  .sim-head p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+    max-width: 46ch;
+  }
+
+  .sim-table {
+    width: 100%;
+    margin-top: 1.5rem;
+    border-collapse: collapse;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .sim-table thead th {
+    text-align: left;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--muted);
+    padding: 0 0 0.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .sim-table tbody th,
+  .sim-table td {
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--line);
+    vertical-align: middle;
+  }
+
+  .sim-table tbody tr:last-child > * {
+    border-bottom: 0;
+  }
+
+  .sim-table tbody th {
+    text-align: left;
+    font-weight: 400;
+  }
+
+  .player {
+    display: block;
+    font-weight: 600;
+  }
+
+  .fixture {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  .num {
+    text-align: right;
+    padding-right: 1.25rem !important;
+    width: 3.5rem;
+  }
+
+  .share-col {
+    width: 52%;
+  }
+
+  .share {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .bar {
+    position: relative;
+    flex: 1;
+    height: 0.6rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--line) 70%, transparent);
+  }
+
+  .fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: var(--share, 0%);
+    border-radius: inherit;
+    background: var(--accent);
+    transition: width 120ms linear;
+  }
+
+  .tick {
+    position: absolute;
+    top: -0.3rem;
+    bottom: -0.3rem;
+    left: var(--engine);
+    width: 2px;
+    margin-left: -1px;
+    background: var(--ink);
+    border-radius: 1px;
+  }
+
+  .pct {
+    width: 3ch;
+    text-align: right;
+    font-weight: 600;
+  }
+
+  .sim-foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.25rem;
+    margin-top: 1.5rem;
+  }
+
+  .run {
+    font: inherit;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--on-accent-soft);
+    background: var(--accent-soft);
+    border: 0;
+    border-radius: 999px;
+    padding: 0.6rem 1.15rem;
+    cursor: pointer;
+    transition: filter 150ms ease;
+  }
+
+  .run:hover {
+    filter: brightness(0.96);
+  }
+
+  .run:disabled {
+    cursor: progress;
+    opacity: 0.7;
+  }
+
+  .status {
+    margin: 0;
+    flex: 1 1 18rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  @media (max-width: 30rem) {
+    .share-col {
+      width: 45%;
+    }
+
+    .num {
+      padding-right: 0.75rem !important;
+    }
+  }
+</style>
+
+<script>
+  type Pick = { name: string; xp: number; start: number; engine: number };
+
+  const RUNS = 1000;
+  const BATCH = 50;
+  const SPREAD = 2;
+
+  // mulberry32: a small seeded generator, so every run is reproducible from its seed.
+  function generator(seed: number) {
+    let a = seed;
+    return () => {
+      a = (a + 0x6d2b79f5) | 0;
+      let t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  function normal(random: () => number) {
+    const u = 1 - random();
+    const v = random();
+    return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
+  }
+
+  // One gameweek: a player who doesn't start scores nothing; one who does
+  // scores around his expected points given that he starts.
+  function playGameweek(picks: Pick[], random: () => number, wins: number[]) {
+    const points = picks.map((p) => {
+      if (random() > p.start) return 0;
+      return Math.max(1, Math.round(p.xp / p.start + SPREAD * normal(random)));
+    });
+    const best = Math.max(...points);
+    const top = points.flatMap((pts, i) => (pts === best ? [i] : []));
+    for (const i of top) wins[i] = (wins[i] ?? 0) + 1 / top.length;
+  }
+
+  for (const root of document.querySelectorAll<HTMLElement>("[data-sim]")) {
+    const picks: Pick[] = JSON.parse(root.dataset.picks ?? "[]");
+    const button = root.querySelector<HTMLButtonElement>("[data-run]");
+    const status = root.querySelector<HTMLElement>("[data-status]");
+    const fills = [...root.querySelectorAll<HTMLElement>("[data-fill]")];
+    const pcts = [...root.querySelectorAll<HTMLElement>("[data-pct]")];
+    if (!button || !status) continue;
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let seed = 2026;
+
+    const draw = (wins: number[], played: number) => {
+      wins.forEach((w, i) => {
+        const share = played ? (100 * w) / played : 0;
+        fills[i]?.style.setProperty("--share", `${share}%`);
+        const pct = pcts[i];
+        if (pct) pct.textContent = `${Math.round(share)}%`;
+      });
+    };
+
+    button.addEventListener("click", () => {
+      const random = generator(seed++);
+      const wins = picks.map(() => 0);
+      let played = 0;
+      button.disabled = true;
+      status.textContent = "Simulating…";
+
+      const finish = () => {
+        draw(wins, played);
+        button.disabled = false;
+        button.textContent = "Run it again";
+        status.textContent =
+          "1,000 gameweeks simulated. Run it again and the shares shift by a point or two; that noise is why the engine samples 20,000.";
+      };
+
+      if (reduceMotion.matches) {
+        for (; played < RUNS; played++) playGameweek(picks, random, wins);
+        finish();
+        return;
+      }
+
+      const step = () => {
+        for (let i = 0; i < BATCH && played < RUNS; i++, played++)
+          playGameweek(picks, random, wins);
+        draw(wins, played);
+        if (played < RUNS) requestAnimationFrame(step);
+        else finish();
+      };
+      requestAnimationFrame(step);
+    });
+  }
+</script>
