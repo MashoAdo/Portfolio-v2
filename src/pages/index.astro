@@ -63,6 +63,9 @@ const projects = [
     summary:
       "A planning tool for Fantasy Premier League managers. Enter a team ID to get transfers, captain, lineup and chip advice for the next deadline, each with how sure it is.",
     tags: ["TypeScript", "React", "AdonisJS", "PostgreSQL", "RabbitMQ"],
+    image: "/fpl-copilot.webp",
+    imageAlt:
+      "FPL Manager Copilot's Today page with the plan for the next deadline",
   },
 ];
 
@@ -249,12 +252,12 @@ const year = new Date().getFullYear();
                 <li class="entry entry-linked">
                   <img
                     class="entry-thumb"
-                    src="/fpl-copilot.webp"
+                    src={p.image}
                     width="480"
                     height="300"
                     loading="lazy"
                     decoding="async"
-                    alt="FPL Manager Copilot's Today page with the plan for the next deadline"
+                    alt={p.imageAlt}
                   />
                   <div>
                     <h3 class="entry-title">
