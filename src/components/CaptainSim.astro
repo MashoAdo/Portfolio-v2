@@ -74,14 +74,12 @@ const picks = [
               <div class="share">
                 <div class="bar" style={`--engine: ${p.engine}%`}>
                   <span class="fill" data-fill={i} />
-                  <span
-                    class="tick"
-                    title={`The engine's full model: ${p.engine}%`}
-                  />
+                  <span class="tick" aria-hidden="true" />
                 </div>
                 <span class="pct" data-pct={i}>
                   –
                 </span>
+                <span class="sr-only">Engine: {p.engine}%</span>
               </div>
             </td>
           </tr>
@@ -91,12 +89,15 @@ const picks = [
   </table>
 
   <div class="sim-foot">
-    <button type="button" class="run" data-run>Simulate 1,000 gameweeks</button>
-    <p class="status" data-status aria-live="polite">
-      The mark on each bar is the engine's answer from 20,000 simulations of its
-      full model.
-    </p>
+    <button type="button" class="run" data-run disabled>
+      Simulate 1,000 gameweeks
+    </button>
+    <p class="status" data-status aria-live="polite"></p>
   </div>
+  <p class="legend">
+    The mark on each bar is the engine's answer from 20,000 simulations of its
+    full model: {picks.map((p) => `${p.name} ${p.engine}%`).join(", ")}.
+  </p>
 </figure>
 
 <style>
@@ -210,8 +211,31 @@ const picks = [
     border-radius: 1px;
   }
 
+  .sim-table thead th.num {
+    text-align: right;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .legend {
+    margin: 1rem 0 0;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  .status:empty {
+    display: none;
+  }
+
   .pct {
-    width: 3ch;
+    width: 4ch;
     text-align: right;
     font-weight: 600;
   }
@@ -308,6 +332,7 @@ const picks = [
     const pcts = [...root.querySelectorAll<HTMLElement>("[data-pct]")];
     if (!button || !status) continue;
 
+    button.disabled = false;
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     let seed = 2026;
 

@@ -2,6 +2,21 @@
 import "../styles/global.css";
 import CaptainSim from "../components/CaptainSim.astro";
 
+const contact = {
+  email: "mashoado@gmail.com",
+  phone: "+254 724 261 655",
+  phoneHref: "tel:+254724261655",
+  location: "Nairobi, Kenya",
+};
+
+const profiles = [
+  { label: "GitHub", href: "https://github.com/MashoAdo" },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/masho-ado-36a16a193/",
+  },
+];
+
 const jobs = [
   {
     role: "Senior Frontend Engineer",
@@ -100,14 +115,14 @@ const technologies = [
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
-    <a class="skip" href="#work">Skip to work</a>
+    <a class="skip" href="#main">Skip to content</a>
 
-    <header class="top wrap">
+    <header id="top" class="top wrap">
       <a href="#top" class="mark" aria-label="Masho Ado, back to top">MA</a>
       <nav aria-label="Sections">
         <a href="#work">Work</a>
@@ -116,7 +131,7 @@ const technologies = [
       </nav>
     </header>
 
-    <main id="top">
+    <main id="main">
       <section class="hero wrap" aria-labelledby="name">
         <h1 id="name">Masho Ado</h1>
         <div class="hero-grid">
@@ -127,20 +142,16 @@ const technologies = [
             is.
           </p>
           <ul class="contact-list" aria-label="Contact">
-            <li><a href="mailto:mashoado@gmail.com">mashoado@gmail.com</a></li>
-            <li>
-              <a
-                href="https://github.com/MashoAdo"
-                rel="noopener"
-                target="_blank">GitHub</a>
-            </li>
-            <li>
-              <a
-                href="https://www.linkedin.com/in/masho-ado-36a16a193/"
-                rel="noopener"
-                target="_blank">LinkedIn</a
-              >
-            </li>
+            <li><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
+            {
+              profiles.map((l) => (
+                <li>
+                  <a href={l.href} rel="noopener" target="_blank">
+                    {l.label}
+                  </a>
+                </li>
+              ))
+            }
           </ul>
         </div>
       </section>
@@ -279,22 +290,20 @@ const technologies = [
     <footer id="contact" class="foot wrap">
       <h2 class="foot-title">Have something worth building?</h2>
       <p class="foot-email">
-        <a href="mailto:mashoado@gmail.com">mashoado@gmail.com</a>
+        <a href={`mailto:${contact.email}`}>{contact.email}</a>
       </p>
       <ul class="foot-links">
-        <li><a href="tel:+254724261655">+254 724 261 655</a></li>
-        <li>
-          <a href="https://github.com/MashoAdo" rel="noopener" target="_blank"
-            >GitHub</a>
-        </li>
-        <li>
-          <a
-            href="https://www.linkedin.com/in/masho-ado-36a16a193/"
-            rel="noopener"
-            target="_blank">LinkedIn</a
-          >
-        </li>
-        <li class="quiet">Nairobi, Kenya</li>
+        <li><a href={contact.phoneHref}>{contact.phone}</a></li>
+        {
+          profiles.map((l) => (
+            <li>
+              <a href={l.href} rel="noopener" target="_blank">
+                {l.label}
+              </a>
+            </li>
+          ))
+        }
+        <li class="quiet">{contact.location}</li>
       </ul>
       <p class="quiet copyright">© {new Date().getFullYear()} Masho Ado</p>
     </footer>
@@ -638,10 +647,10 @@ const technologies = [
     font-weight: 500;
   }
 
-  .degree {
+  .facts .degree {
     font-size: 1.35rem;
     font-weight: 650;
-    margin-bottom: 0.35rem !important;
+    margin-bottom: 0.35rem;
   }
 
   .quiet {
