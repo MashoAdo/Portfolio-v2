@@ -1,243 +1,759 @@
 ---
 import "../styles/global.css";
+
+const contact = {
+  email: "mashoado@gmail.com",
+  phone: "+254 724 261 655",
+  phoneHref: "tel:+254724261655",
+};
+
+const sections = [
+  { id: "about", label: "About" },
+  { id: "experience", label: "Experience" },
+  { id: "projects", label: "Projects" },
+  { id: "education", label: "Education" },
+];
+
+const jobs = [
+  {
+    role: "Software Engineer",
+    company: "GRIFFIN Global Technologies",
+    years: "Dec 2025 – Now",
+    summary:
+      "Built a suite of production applications for insurance claims operations: a secure multi-tenant central platform that is the single source of truth for claims, inspections, adjusters and carriers, plus two customer-facing apps for recruiting and managing adjusters and handling claim inspections.",
+    tags: [".NET", "React", "PostgreSQL", "Azure"],
+  },
+  {
+    role: "Frontend Developer",
+    company: "Workpay",
+    years: "Oct 2023 – Aug 2025",
+    summary:
+      "Built performance management tools and feature flagging systems. Implemented CI pipelines and OAuth 2.0 authentication. Integrated AI code review, which cut bugs by 15%.",
+    tags: ["Feature flags", "OAuth 2.0", "CI pipelines", "AI code review"],
+  },
+  {
+    role: "Frontend Engineering Consultant",
+    company: "Workpay",
+    years: "May – Oct 2023",
+    summary: "Contract role before joining the team full time.",
+    tags: [],
+  },
+  {
+    role: "Full Stack Engineer",
+    company: "Zumi Africa",
+    years: "2022 – 2023",
+    summary:
+      "Developed a B2B e-commerce platform with unified supplier and customer views. Built REST APIs with AdonisJS. Tuned performance to pass Google's Core Web Vitals.",
+    tags: ["AdonisJS", "REST APIs", "Core Web Vitals"],
+  },
+  {
+    role: "Frontend Engineer",
+    company: "The Next Stage Lab",
+    years: "2022",
+    summary:
+      "Built web pages with React, Next.js and Bootstrap from UI and UX designs.",
+    tags: ["React", "Next.js", "Bootstrap"],
+  },
+];
+
+const projects = [
+  {
+    name: "FPL Manager Copilot",
+    href: "https://fpl.mashoado.com",
+    summary:
+      "A planning tool for Fantasy Premier League managers. Enter a team ID to get transfers, captain, lineup and chip advice for the next deadline, each with how sure it is.",
+    tags: ["TypeScript", "React", "AdonisJS", "PostgreSQL", "RabbitMQ"],
+    image: "/fpl-copilot.webp",
+    imageAlt:
+      "FPL Manager Copilot's Today page with the plan for the next deadline",
+  },
+];
+
+const technologies = [
+  "TypeScript",
+  "React",
+  "Next.js",
+  "Tailwind CSS",
+  "Node.js",
+  "AdonisJS",
+  "C#",
+  ".NET",
+  "PostgreSQL",
+  "AWS",
+  "Azure",
+  "Docker",
+];
+
+const year = new Date().getFullYear();
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <meta
       name="description"
-      content="Masho Ado - Software Engineer based in Nairobi, Kenya"
+      content="Masho Ado, software engineer in Kenya building web applications end to end."
     />
+    <meta name="theme-color" content="#0d1424" />
     <title>Masho Ado | Software Engineer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
   </head>
-  <body
-    class="min-h-screen bg-[#faf9f6] text-[#1a1a1a] font-sans selection:bg-[#c9a87c] selection:text-white overflow-x-hidden"
-  >
-    <main class="max-w-5xl mx-auto px-8 md:px-16 py-20 md:py-32">
-      <!-- Hero Section -->
-      <section class="mb-32 md:mb-48">
-        <div class="grid grid-cols-12 gap-4">
-          <div class="col-span-12 md:col-span-8">
-            <p
-              class="text-[#c9a87c] text-sm tracking-[0.3em] uppercase mb-6 font-medium"
+  <body>
+    <a class="skip" href="#content">Skip to content</a>
+    <div class="spotlight" aria-hidden="true"></div>
+
+    <div class="layout">
+      <header class="side">
+        <div>
+          <h1><a href="/">Masho Ado</a></h1>
+          <p class="title">Software Engineer</p>
+          <p class="tagline">
+            I build web applications end to end, from accessible interfaces to
+            the APIs behind them.
+          </p>
+
+          <nav class="nav" aria-label="Sections">
+            <ul>
+              {
+                sections.map((s) => (
+                  <li>
+                    <a href={`#${s.id}`} data-nav={s.id}>
+                      <span class="nav-line" aria-hidden="true" />
+                      <span>{s.label}</span>
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </nav>
+        </div>
+
+        <ul class="socials" aria-label="Contact">
+          <li>
+            <a
+              href="https://github.com/MashoAdo"
+              rel="noopener"
+              target="_blank"
+              aria-label="GitHub"
             >
-              Software Engineer
-            </p>
-            <h1
-              class="font-serif text-5xl md:text-7xl lg:text-8xl font-normal leading-[0.95] mb-8"
+              <svg viewBox="0 0 24 24" aria-hidden="true"
+                ><path
+                  fill="currentColor"
+                  d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.1c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z"
+                ></path></svg
+              >
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/masho-ado-36a16a193/"
+              rel="noopener"
+              target="_blank"
+              aria-label="LinkedIn"
             >
-              Masho<br />
-              <span class="italic text-[#666]">Ado</span>
-            </h1>
-            <div class="w-16 h-px bg-[#c9a87c] mb-8"></div>
-            <p
-              class="text-lg md:text-xl text-[#555] leading-relaxed max-w-xl font-light"
-            >
-              Crafting accessible, pixel-perfect interfaces that blend
-              thoughtful design with robust engineering. Based in Nairobi,
-              Kenya.
-            </p>
+              <svg viewBox="0 0 24 24" aria-hidden="true"
+                ><path
+                  fill="currentColor"
+                  d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2ZM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2ZM7.1 20.5H3.5V9h3.6v11.5ZM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7C24 .8 23.2 0 22.2 0Z"
+                ></path></svg
+              >
+            </a>
+          </li>
+          <li>
+            <a href={`mailto:${contact.email}`} aria-label="Email">
+              <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><rect x="3" y="5" width="18" height="14" rx="2"></rect><path
+                  d="m3.5 6.5 8.5 6 8.5-6"></path></svg
+              >
+            </a>
+          </li>
+        </ul>
+      </header>
+
+      <main id="content" class="main">
+        <section id="about" aria-label="About">
+          <h2 class="section-title">About</h2>
+          <p>
+            I'm a software engineer in Kenya who builds web applications end to
+            end. Most of my time goes into the frontend, making interfaces that
+            are accessible, fast and easy to use, but I'm just as comfortable
+            designing the APIs and data behind them.
+          </p>
+          <p>
+            Right now I'm at <strong>GRIFFIN Global Technologies</strong>,
+            building production applications for insurance claims operations.
+            Before that I spent over two years at <strong>Workpay</strong> on performance
+            management tools and feature flagging, and built B2B e-commerce at <strong
+              >Zumi Africa</strong
+            >.
+          </p>
+          <p>
+            Outside work I built <a
+              href="https://fpl.mashoado.com"
+              rel="noopener"
+              target="_blank">FPL Manager Copilot</a
+            >, a planning tool for Fantasy Premier League managers.
+          </p>
+        </section>
+
+        <section id="experience" aria-label="Experience">
+          <h2 class="section-title">Experience</h2>
+          <ol class="entries">
+            {
+              jobs.map((j) => (
+                <li class="entry">
+                  <p class="entry-when">{j.years}</p>
+                  <div>
+                    <h3 class="entry-title">
+                      {j.role}
+                      <span class="entry-org">{j.company}</span>
+                    </h3>
+                    <p class="entry-text">{j.summary}</p>
+                    {j.tags.length > 0 && (
+                      <ul class="tags" aria-label="Skills used">
+                        {j.tags.map((t) => (
+                          <li>{t}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </li>
+              ))
+            }
+          </ol>
+
+          <div class="skills">
+            <h3>Technologies</h3>
+            <ul class="tags">
+              {technologies.map((t) => <li>{t}</li>)}
+            </ul>
           </div>
-          <div class="col-span-12 md:col-span-4 md:text-right mt-8 md:mt-0">
-            <div class="space-y-3 text-sm text-[#777]">
-              <p>mashoado@gmail.com</p>
-              <p>+254 724 261 655</p>
-              <p class="text-[#c9a87c]">Nairobi, Kenya</p>
+        </section>
+
+        <section id="projects" aria-label="Projects">
+          <h2 class="section-title">Projects</h2>
+          <ul class="entries">
+            {
+              projects.map((p) => (
+                <li class="entry entry-linked">
+                  <img
+                    class="entry-thumb"
+                    src={p.image}
+                    width="480"
+                    height="300"
+                    loading="lazy"
+                    decoding="async"
+                    alt={p.imageAlt}
+                  />
+                  <div>
+                    <h3 class="entry-title">
+                      <a
+                        class="entry-link"
+                        href={p.href}
+                        rel="noopener"
+                        target="_blank"
+                      >
+                        {p.name}
+                        <svg
+                          class="arrow"
+                          viewBox="0 0 16 16"
+                          aria-hidden="true"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.6"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M5 11 11 5M6 5h5v5" />
+                        </svg>
+                      </a>
+                    </h3>
+                    <p class="entry-text">{p.summary}</p>
+                    <ul class="tags" aria-label="Built with">
+                      {p.tags.map((t) => (
+                        <li>{t}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+
+        <section id="education" aria-label="Education">
+          <h2 class="section-title">Education</h2>
+          <div class="entry">
+            <p class="entry-when">2017 – 2021</p>
+            <div>
+              <h3 class="entry-title">
+                Computer Science
+                <span class="entry-org"
+                  >Jomo Kenyatta University of Agriculture and Technology</span
+                >
+              </h3>
+              <p class="entry-text">Second Class Honours (Upper Division)</p>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- Links -->
-      <section class="mb-32 md:mb-48">
-        <div class="flex flex-wrap gap-8 md:gap-12">
-          <a
-            href="https://github.com/MashoAdo"
-            target="_blank"
-            rel="noopener"
-            class="group flex items-center gap-2 text-sm tracking-wider uppercase text-[#1a1a1a] hover:text-[#c9a87c] transition-colors duration-300"
-          >
-            <span>GitHub</span>
-            <span
-              class="w-4 h-px bg-current transform group-hover:w-6 transition-all duration-300"
-            ></span>
-          </a>
-          <a
-            href="https://www.linkedin.com/in/masho-ado-36a16a193/"
-            target="_blank"
-            rel="noopener"
-            class="group flex items-center gap-2 text-sm tracking-wider uppercase text-[#1a1a1a] hover:text-[#c9a87c] transition-colors duration-300"
-          >
-            <span>LinkedIn</span>
-            <span
-              class="w-4 h-px bg-current transform group-hover:w-6 transition-all duration-300"
-            ></span>
-          </a>
-        </div>
-      </section>
-
-      <!-- Experience -->
-      <section class="mb-32 md:mb-48">
-        <div class="grid grid-cols-12 gap-8">
-          <div class="col-span-12 md:col-span-3">
-            <h2
-              class="text-xs tracking-[0.3em] uppercase text-[#c9a87c] font-medium sticky top-8"
-            >
-              Experience
-            </h2>
-          </div>
-          <div class="col-span-12 md:col-span-9 space-y-16">
-            <!-- Job 1 -->
-            <article class="group">
-              <div
-                class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-4"
-              >
-                <h3 class="font-serif text-2xl md:text-3xl italic">
-                  Senior Frontend Engineer
-                </h3>
-                <span class="text-sm text-[#999] mt-2 md:mt-0"
-                  >2023 — Present</span
-                >
-              </div>
-              <p class="text-[#c9a87c] text-sm mb-4">Workpay</p>
-              <p class="text-[#666] leading-relaxed max-w-2xl">
-                Building performance management tools and feature flagging
-                systems. Implemented CI pipelines and OAuth 2.0 authentication.
-                Integrated AI code review reducing bugs by 15%.
-              </p>
-            </article>
-
-            <!-- Job 2 -->
-            <article class="group">
-              <div
-                class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-4"
-              >
-                <h3 class="font-serif text-2xl md:text-3xl italic">
-                  Full Stack Engineer
-                </h3>
-                <span class="text-sm text-[#999] mt-2 md:mt-0">2022 — 2023</span
-                >
-              </div>
-              <p class="text-[#c9a87c] text-sm mb-4">Zumi Africa</p>
-              <p class="text-[#666] leading-relaxed max-w-2xl">
-                Developed B2B e-commerce platform with unified supplier/customer
-                views. Built scalable RESTful APIs using Adonis.js. Optimized
-                performance achieving Google Core Web Vitals.
-              </p>
-            </article>
-
-            <!-- Job 3 -->
-            <article class="group">
-              <div
-                class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-4"
-              >
-                <h3 class="font-serif text-2xl md:text-3xl italic">
-                  Frontend Engineer
-                </h3>
-                <span class="text-sm text-[#999] mt-2 md:mt-0">2022</span>
-              </div>
-              <p class="text-[#c9a87c] text-sm mb-4">The Next Stage Lab</p>
-              <p class="text-[#666] leading-relaxed max-w-2xl">
-                Built user-friendly web pages using React, Next.js, and
-                Bootstrap. Translated UI/UX designs into functional, accessible
-                web experiences.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- Skills -->
-      <section class="mb-32 md:mb-48">
-        <div class="grid grid-cols-12 gap-8">
-          <div class="col-span-12 md:col-span-3">
-            <h2
-              class="text-xs tracking-[0.3em] uppercase text-[#c9a87c] font-medium"
-            >
-              Technologies
-            </h2>
-          </div>
-          <div class="col-span-12 md:col-span-9">
-            <div class="flex flex-wrap gap-x-8 gap-y-4">
-              <span class="text-lg font-serif italic">React</span>
-              <span class="text-lg font-serif italic">Next.js</span>
-              <span class="text-lg font-serif italic">TypeScript</span>
-              <span class="text-lg font-serif italic">Tailwind</span>
-              <span class="text-lg font-serif italic">Node.js</span>
-              <span class="text-lg font-serif italic">AWS</span>
-              <span class="text-lg font-serif italic">Docker</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Education -->
-      <section class="mb-32">
-        <div class="grid grid-cols-12 gap-8">
-          <div class="col-span-12 md:col-span-3">
-            <h2
-              class="text-xs tracking-[0.3em] uppercase text-[#c9a87c] font-medium"
-            >
-              Education
-            </h2>
-          </div>
-          <div class="col-span-12 md:col-span-9">
-            <h3 class="font-serif text-2xl md:text-3xl italic mb-2">
-              Computer Science
-            </h3>
-            <p class="text-[#666] mb-2">
-              Jomo Kenyatta University of Agriculture and Technology
-            </p>
-            <p class="text-sm text-[#999]">
-              2017 — 2021 • Second Class Honours (Upper Division)
-            </p>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer
-      class="max-w-5xl mx-auto px-8 md:px-16 py-12 border-t border-[#e5e5e5]"
-    >
-      <p class="text-sm text-[#999] font-serif italic">
-        © {new Date().getFullYear()} Masho Ado
-      </p>
-    </footer>
+        <footer class="foot">
+          <p>
+            Get in touch at <a href={`mailto:${contact.email}`}
+              >{contact.email}</a
+            > or <a href={contact.phoneHref}>{contact.phone}</a>.
+          </p>
+          <p>© {year} Masho Ado</p>
+        </footer>
+      </main>
+    </div>
   </body>
 </html>
 
 <style>
-  :root {
-    --font-serif: "Cormorant Garamond", Georgia, serif;
-    --font-sans: "DM Sans", system-ui, sans-serif;
+  .skip {
+    position: absolute;
+    left: 1rem;
+    top: -3rem;
+    z-index: 10;
+    padding: 0.5rem 0.9rem;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 6px;
   }
 
-  .font-serif {
-    font-family: var(--font-serif);
+  .skip:focus {
+    top: 1rem;
   }
 
-  .font-sans {
-    font-family: var(--font-sans);
+  .spotlight {
+    display: none;
   }
 
-  /* Smooth scroll */
-  html {
-    scroll-behavior: smooth;
+  @media (min-width: 64rem) and (hover: hover) {
+    .spotlight {
+      display: block;
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: radial-gradient(
+        600px circle at var(--x, 50%) var(--y, -20%),
+        var(--glow),
+        transparent 80%
+      );
+    }
   }
 
-  /* Custom selection */
-  ::selection {
-    background-color: #c9a87c;
-    color: white;
+  .layout {
+    position: relative;
+    z-index: 1;
+    max-width: 72rem;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+
+  @media (min-width: 64rem) {
+    .layout {
+      display: flex;
+      justify-content: space-between;
+      gap: 4rem;
+      padding-inline: 3rem;
+    }
+  }
+
+  /* Left column: sticky on wide screens */
+  .side {
+    padding-top: 4rem;
+  }
+
+  @media (min-width: 64rem) {
+    .side {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      box-sizing: border-box;
+      width: 44%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-block: 6rem;
+    }
+  }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(2.5rem, 5.5vw, 3.25rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  h1 a {
+    text-decoration: none;
+  }
+
+  .title {
+    margin: 0.75rem 0 0;
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+
+  .tagline {
+    margin: 1rem 0 0;
+    max-width: 22rem;
+    color: var(--muted);
+  }
+
+  .nav {
+    display: none;
+  }
+
+  @media (min-width: 64rem) {
+    .nav {
+      display: block;
+      margin-top: 4rem;
+    }
+  }
+
+  .nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav a {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    padding-block: 0.6rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  .nav-line {
+    display: block;
+    width: 2rem;
+    height: 1px;
+    background: currentColor;
+    transition: width 150ms ease;
+  }
+
+  .nav a:hover,
+  .nav a:focus-visible,
+  .nav a[aria-current="true"] {
+    color: var(--ink);
+  }
+
+  .nav a:hover .nav-line,
+  .nav a:focus-visible .nav-line,
+  .nav a[aria-current="true"] .nav-line {
+    width: 4rem;
+  }
+
+  .socials {
+    list-style: none;
+    display: flex;
+    gap: 1.25rem;
+    margin: 2rem 0 0;
+    padding: 0;
+  }
+
+  .socials a {
+    display: block;
+    color: var(--muted);
+  }
+
+  .socials a:hover {
+    color: var(--ink);
+  }
+
+  .socials svg {
+    display: block;
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+
+  /* Right column */
+  .main {
+    padding-block: 4rem 3rem;
+  }
+
+  @media (min-width: 64rem) {
+    .main {
+      width: 52%;
+      padding-block: 6rem;
+    }
+  }
+
+  section {
+    scroll-margin-top: 4rem;
+    margin-bottom: 5rem;
+  }
+
+  .section-title {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    margin: 0 -1.5rem 1.5rem;
+    padding: 1.25rem 1.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    background: color-mix(in srgb, var(--paper) 85%, transparent);
+    backdrop-filter: blur(8px);
+  }
+
+  @media (min-width: 64rem) {
+    .section-title {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  #about p {
+    margin: 0 0 1rem;
+    color: var(--muted);
+  }
+
+  #about strong {
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  #about a {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .entries {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 3rem;
+  }
+
+  .entry {
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  @media (min-width: 40rem) {
+    .entry {
+      grid-template-columns: 8.5rem minmax(0, 1fr);
+      gap: 1.5rem;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .entries {
+      gap: 0.75rem;
+    }
+
+    .entries .entry {
+      margin-inline: -1.5rem;
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      transition:
+        background-color 150ms ease,
+        border-color 150ms ease,
+        opacity 150ms ease;
+    }
+
+    .entries .entry:hover {
+      background: var(--surface);
+      border-color: var(--line);
+      box-shadow: inset 0 1px 0 0 color-mix(in srgb, var(--ink) 8%, transparent);
+    }
+
+    .entries:hover .entry:not(:hover) {
+      opacity: 0.5;
+    }
+
+    .entries .entry:hover .entry-title {
+      color: var(--accent);
+    }
+  }
+
+  .entry-when {
+    margin: 0;
+    padding-top: 0.15rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .entry-title {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .entry-org {
+    display: block;
+    font-weight: 400;
+    color: var(--muted);
+  }
+
+  .entry-link {
+    text-decoration: none;
+  }
+
+  .entry-thumb {
+    display: block;
+    width: 100%;
+    max-width: 12rem;
+    height: auto;
+    border-radius: 6px;
+    border: 2px solid var(--line);
+    order: 1;
+  }
+
+  @media (min-width: 40rem) {
+    .entry-thumb {
+      order: 0;
+      margin-top: 0.25rem;
+    }
+  }
+
+  .entry-link:hover {
+    color: var(--accent);
+  }
+
+  .entry-link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+
+  .entry-linked {
+    position: relative;
+  }
+
+  .arrow {
+    display: inline-block;
+    width: 0.9em;
+    height: 0.9em;
+    margin-left: 0.25rem;
+    vertical-align: -0.05em;
+    transition: transform 150ms ease;
+  }
+
+  .entry-linked:hover .arrow {
+    transform: translate(2px, -2px);
+  }
+
+  .entry-text {
+    margin: 0.5rem 0 0;
+    font-size: 0.95rem;
+    color: var(--muted);
+  }
+
+  .tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0 0;
+    padding: 0;
+  }
+
+  .tags li {
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--accent);
+    background: var(--accent-soft);
+  }
+
+  .skills {
+    margin-top: 3rem;
+  }
+
+  .skills h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .foot {
+    font-size: 0.875rem;
+    color: var(--muted);
+  }
+
+  .foot p {
+    margin: 0 0 0.5rem;
+    max-width: 28rem;
+  }
+
+  .foot a {
+    color: var(--ink);
   }
 </style>
+
+<script>
+  // A soft glow that follows the cursor on wide screens.
+  const spotlight = document.querySelector<HTMLElement>(".spotlight");
+  if (spotlight) {
+    window.addEventListener(
+      "pointermove",
+      (e) => {
+        spotlight.style.setProperty("--x", `${e.clientX}px`);
+        spotlight.style.setProperty("--y", `${e.clientY}px`);
+      },
+      { passive: true },
+    );
+  }
+
+  // Mark the nav link of the section in view.
+  const links = new Map(
+    [...document.querySelectorAll<HTMLAnchorElement>("[data-nav]")].map((a) => [
+      a.dataset.nav,
+      a,
+    ]),
+  );
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        for (const [id, a] of links) {
+          if (id === entry.target.id) a.setAttribute("aria-current", "true");
+          else a.removeAttribute("aria-current");
+        }
+      }
+    },
+    { rootMargin: "-30% 0px -60% 0px" },
+  );
+  for (const id of links.keys()) {
+    const section = id ? document.getElementById(id) : null;
+    if (section) observer.observe(section);
+  }
+</script>
