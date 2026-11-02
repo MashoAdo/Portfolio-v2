@@ -1,32 +1,19 @@
 @import "tailwindcss";
 
-/* Tokens: neutral greys with one blue accent, one typeface, light and dark by system setting. */
+/* Tokens: a deep slate page with one soft indigo accent. */
 :root {
-  --paper: #fafafa;
-  --surface: #ffffff;
-  --ink: #18181b;
-  --muted: #62626b;
-  --line: #e4e4e7;
-  --accent: #1f56c9;
-  --accent-soft: #e6edfc;
+  --paper: #0d1424;
+  --surface: color-mix(in srgb, #1e293b 55%, transparent);
+  --ink: #e2e8f0;
+  --muted: #94a3b8;
+  --line: #1e293b;
+  --accent: #a5b4fc;
+  --accent-soft: color-mix(in srgb, #818cf8 14%, transparent);
+  --glow: rgba(99, 102, 241, 0.12);
 
   --font: "Geist", ui-sans-serif, system-ui, sans-serif;
 
-  color-scheme: light;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --paper: #101114;
-    --surface: #17181d;
-    --ink: #ededef;
-    --muted: #9d9ea8;
-    --line: #26272d;
-    --accent: #93b1ff;
-    --accent-soft: #1b2440;
-
-    color-scheme: dark;
-  }
+  color-scheme: dark;
 }
 
 html {
@@ -47,7 +34,7 @@ body {
 }
 
 ::selection {
-  background: var(--ink);
+  background: var(--accent);
   color: var(--paper);
 }
 
@@ -64,7 +51,7 @@ a:hover {
 }
 
 :focus-visible {
-  outline: 2px solid var(--ink);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
   border-radius: 2px;
 }
