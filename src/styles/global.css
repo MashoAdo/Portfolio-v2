@@ -1,36 +1,23 @@
 @import "tailwindcss";
 
-/*
- * Tokens. A cool paper and indigo ink, with the lavender of the FPL Copilot
- * captain's armband as the one accent. Dark mode follows the system.
- */
+/* Tokens: neutral greys, one typeface, light and dark by system setting. */
 :root {
-  --paper: #f2f3f6;
-  --surface: #ffffff;
-  --ink: #1a1d33;
-  --muted: #585e78;
-  --line: #d9dce6;
-  --accent: #4448c8;
-  --accent-soft: #cfd1fb;
-  --on-accent-soft: #1f2170;
+  --paper: #fafafa;
+  --ink: #18181b;
+  --muted: #6b6b73;
+  --line: #e4e4e7;
 
-  --font: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
-  --measure: 68ch;
-  --gutter: clamp(1.25rem, 5vw, 4rem);
+  --font: "Geist", ui-sans-serif, system-ui, sans-serif;
 
   color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --paper: #13141d;
-    --surface: #1c1e2b;
-    --ink: #eceef6;
-    --muted: #a3a7be;
-    --line: #2e3145;
-    --accent: #a5a8ff;
-    --accent-soft: #3a3d86;
-    --on-accent-soft: #e4e5ff;
+    --paper: #111113;
+    --ink: #ededef;
+    --muted: #9b9ba3;
+    --line: #2a2a2e;
 
     color-scheme: dark;
   }
@@ -40,8 +27,7 @@ html {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font);
-  font-optical-sizing: auto;
-  font-size: 1.0625rem;
+  font-size: 1rem;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -55,8 +41,8 @@ body {
 }
 
 ::selection {
-  background: var(--accent-soft);
-  color: var(--on-accent-soft);
+  background: var(--ink);
+  color: var(--paper);
 }
 
 a {
@@ -72,7 +58,7 @@ a:hover {
 }
 
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--ink);
   outline-offset: 3px;
   border-radius: 2px;
 }
